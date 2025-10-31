@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #f7f7f7;
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    form {
+      width: 100%;
+      max-width: 600px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    a {
+      margin-top: 20px;
+      text-decoration: none;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Edit Portfolio Content</h1>
+
+  <form id="editForm">
+    <label for="projectName">Project Name</label>
+    <input type="text" id="projectName" placeholder="Enter project title">
+
+    <label for="projectDesc">Description</label>
+    <textarea id="projectDesc" rows="3" placeholder="Enter short project description"></textarea>
+
+    <label for="projectImage">Project Image URL</label>
+    <input type="text" id="projectImage" placeholder="Paste image link">
+
+    <button type="button" id="saveBtn">💾 Save Changes</button>
+  </form>
+
+  <a href="index.html">⬅ Back to Portfolio</a>
+
+  <script type="module">
+    // Firebase Import
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDWKckMinuclZgPsBYRoAnowMnEjRpsxWQ",
+      authDomain: "omar-project-eabc2.firebaseapp.com",
+      projectId: "omar-project-eabc2",
+      storageBucket: "omar-project-eabc2.firebasestorage.app",
+      messagingSenderId: "985689835215",
+      appId: "1:985689835215:web:9614b862adbe4d276ad9ba"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    document.getElementById("saveBtn").addEventListener("click", async () => {
+      const name = document.getElementById("projectName").value.trim();
+      const desc = document.getElementById("projectDesc").value.trim();
+      const image = document.getElementById("projectImage").value.trim();
+
+      if (!name || !desc || !image) {
+        alert("Please fill all fields!");
+        return;
+      }
+
+      try {
+        await setDoc(doc(db, "projects", name), {
+          title: name,
+          description: desc,
+          imageUrl: image,
+        });
+        alert("✅ Saved Successfully!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Error saving data.");
+      }
+    });
+  </script>
+</body>
+</html>

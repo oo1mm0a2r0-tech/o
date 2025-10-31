@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omar's Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Omar Hazem</h1>
+    <p>I design & build websites</p>
+  </header>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hi, I'm <strong>Omar Hazem</strong> — a logo designer, web developer, and copywriter.
+      I love transforming ideas into beautiful, functional, and modern web experiences.
+      My focus is on clarity, creativity, and delivering high-quality work that helps brands stand out.
+    </p>
+    <p>
+      I specialize in <strong>logo design</strong>, <strong>responsive websites</strong>,
+      and <strong>social media copywriting</strong>. I also offer <strong>English ↔ Arabic translation</strong>
+      to make your content accessible worldwide.
+    </p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="images/project1.png" alt="Project 1" />
+        <h3>Logo Design</h3>
+      </div>
+      <div class="project-card">
+        <img src="images/project2.png" alt="Project 2" />
+        <h3>Web Development</h3>
+      </div>
+      <div class="project-card">
+        <img src="images/project3.png" alt="Project 3" />
+        <h3>Copywriting</h3>
+      </div>
+      <div class="project-card">
+        <img src="images/project4.png" alt="Project 4" />
+        <h3>Arabic Translation</h3>
+      </div>
+      <div class="project-card">
+        <img src="images/project5.png" alt="Project 5" />
+        <h3>Design</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer / Contact -->
+  <footer>
+    <h2>Contact Me</h2>
+    <ul class="social-links">
+      <li><a href="mailto:oo2mm00a1r0@gmail.com">📧 Gmail</a></li>
+      <li><a href="https://github.com/oo1mm0a2r0-tech" target="_blank">💻 GitHub</a></li>
+      <li><a href="https://www.instagram.com/omarh-azem9" target="_blank">📸 Instagram</a></li>
+    </ul>
+
+    <!-- Admin Button -->
+    <button id="adminBtn">🔒 Edit Portfolio (Admin Only)</button>
+  </footer>
+
+  <!-- Popup -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span id="closePopup">&times;</span>
+      <h2>Enter Admin Password</h2>
+      <input type="password" id="adminPassword" placeholder="Enter password..." />
+      <button id="submitPassword">Enter</button>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

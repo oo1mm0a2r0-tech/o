@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Omar Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="firebase-config.js"></script>
+</head>
+<body>
+  <h1>🛠️ Admin Dashboard</h1>
+
+  <section id="about-section">
+    <h2>About Me</h2>
+    <input type="text" id="about-title" placeholder="Your name...">
+    <textarea id="about-desc" placeholder="Short description..."></textarea>
+    <button id="saveAbout">💾 Save About</button>
+  </section>
+
+  <hr>
+
+  <section id="projects-section">
+    <h2>Projects</h2>
+    <input type="text" id="project-title" placeholder="Project Title">
+    <textarea id="project-desc" placeholder="Project Description"></textarea>
+    <input type="text" id="project-img" placeholder="Image URL">
+    <button id="addProject">➕ Add Project</button>
+
+    <div id="projectList"></div>
+  </section>
+
+  <hr>
+
+  <section id="contact-section">
+    <h2>Contact Links</h2>
+    <input type="text" id="gmail-link" placeholder="Gmail link">
+    <input type="text" id="github-link" placeholder="GitHub link">
+    <input type="text" id="insta-link" placeholder="Instagram link">
+    <button id="saveContact">💾 Save Contact</button>
+  </section>
+
+  <br>
+  <a href="index.html">← Back to Portfolio</a>
+
+  <script type="module" src="dashboard.js"></script>
+</body>
+</html>

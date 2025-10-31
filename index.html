@@ -8,59 +8,23 @@
 </head>
 <body>
   <header>
-    <h1>Omar Hazem</h1>
-    <p>I design & build websites</p>
+    <h1 id="about-title">Omar Hazem</h1>
+    <p id="about-desc">I design & build websites</p>
   </header>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Hi, I'm <strong>Omar Hazem</strong> — a logo designer, web developer, and copywriter.
-      I love transforming ideas into beautiful, functional, and modern web experiences.
-      My focus is on clarity, creativity, and delivering high-quality work that helps brands stand out.
-    </p>
-    <p>
-      I specialize in <strong>logo design</strong>, <strong>responsive websites</strong>,
-      and <strong>social media copywriting</strong>. I also offer <strong>English ↔ Arabic translation</strong>
-      to make your content accessible worldwide.
-    </p>
-  </section>
-
-  <!-- Projects Section -->
   <section id="projects">
     <h2>My Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <img src="images/project1.png" alt="Project 1" />
-        <h3>Logo Design</h3>
-      </div>
-      <div class="project-card">
-        <img src="images/project2.png" alt="Project 2" />
-        <h3>Web Development</h3>
-      </div>
-      <div class="project-card">
-        <img src="images/project3.png" alt="Project 3" />
-        <h3>Copywriting</h3>
-      </div>
-      <div class="project-card">
-        <img src="images/project4.png" alt="Project 4" />
-        <h3>Arabic Translation</h3>
-      </div>
-      <div class="project-card">
-        <img src="images/project5.png" alt="Project 5" />
-        <h3>Design</h3>
-      </div>
+    <div class="project-grid" id="project-list">
+      <!-- Projects from Firebase will appear here -->
     </div>
   </section>
 
-  <!-- Footer / Contact -->
   <footer>
     <h2>Contact Me</h2>
     <ul class="social-links">
-      <li><a href="mailto:oo2mm00a1r0@gmail.com">📧 Gmail</a></li>
-      <li><a href="https://github.com/oo1mm0a2r0-tech" target="_blank">💻 GitHub</a></li>
-      <li><a href="https://www.instagram.com/omarh-azem9" target="_blank">📸 Instagram</a></li>
+      <li><a id="contact-gmail" href="#" target="_blank">📧 Gmail</a></li>
+      <li><a id="contact-github" href="#" target="_blank">💻 GitHub</a></li>
+      <li><a id="contact-insta" href="#" target="_blank">📸 Instagram</a></li>
     </ul>
 
     <!-- Admin Button -->
@@ -77,6 +41,53 @@
     </div>
   </div>
 
-  <script src="main.js"></script>
+  <!-- Scripts -->
+ <script type="module" src="firebase-config.js"></script>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAgpP3jnbtplxwa5NLkYPIPwiccKl9SVhs",
+    authDomain: "omar-portfolio-182e4.firebaseapp.com",
+    projectId: "omar-portfolio-182e4",
+    storageBucket: "omar-portfolio-182e4.firebasestorage.app",
+    messagingSenderId: "367899789259",
+    appId: "1:367899789259:web:b7d368d2a4ae671767584e"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // تحميل المشاريع من Firestore
+  async function loadProjects() {
+    const projectGrid = document.querySelector(".project-grid");
+    projectGrid.innerHTML = "";
+
+    const querySnapshot = await getDocs(collection(db, "projects"));
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      const card = document.createElement("div");
+      card.classList.add("project-card");
+      card.innerHTML = `
+        <img src="${data.image}" alt="${data.title}" />
+        <h3>${data.title}</h3>
+        <p>${data.description}</p>
+      `;
+      projectGrid.appendChild(card);
+    });
+  }
+
+  loadProjects();
+  document.getElementById("adminBtn").addEventListener("click", () => {
+  const pass = prompt("Enter admin password:");
+  if (pass === "omar2025") {
+    window.location.href = "dashboard.html";
+  } else {
+    alert("❌ Wrong password!");
+  }
+});
+</script>
+ <script type="module" src="script.js"></script>
 </body>
 </html>

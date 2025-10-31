@@ -74,3 +74,32 @@ async function loadProjects() {
 }
 
 loadProjects();
+// ----- Admin Login -----
+const adminBtn = document.getElementById("adminBtn");
+const popup = document.getElementById("popup");
+const closePopup = document.getElementById("closePopup");
+const submitPassword = document.getElementById("submitPassword");
+
+// لما تضغط على زرار Edit Portfolio
+adminBtn.addEventListener("click", () => {
+  popup.style.display = "flex"; // يظهر الـ popup
+});
+
+// لما تضغط على علامة ×
+closePopup.addEventListener("click", () => {
+  popup.style.display = "none";
+});
+
+// لما تدخل الباسورد وتضغط Enter
+submitPassword.addEventListener("click", () => {
+  const inputPassword = document.getElementById("adminPassword").value;
+
+  // الباسورد اللي تختاره
+  const adminPassword = "omar2025";
+
+  if (inputPassword === adminPassword) {
+    window.location.href = "edit.html"; // يفتح صفحة التعديل
+  } else {
+    alert("❌ Wrong password!");
+  }
+});

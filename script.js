@@ -1,105 +1,188 @@
-// Firebase imports
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+// ===============================
+// 🔥 Firebase Imports
+// ===============================
+import { db } from "./firebase-config.js";
+import {
+  collection,
+  getDocs,
+  doc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
-// Firebase Config
-const firebaseConfig = {
-  apiKey: "AIzaSyAgpP3jnbtplxwa5NLkYPIPwiccKl9SVhs",
-  authDomain: "omar-portfolio-182e4.firebaseapp.com",
-  projectId: "omar-portfolio-182e4",
-  storageBucket: "omar-portfolio-182e4.firebasestorage.app",
-  messagingSenderId: "367899789259",
-  appId: "1:367899789259:web:b7d368d2a4ae671767584e"
-};
+// ===============================
+// 💫 Loader أثناء تحميل البيانات
+// ===============================
+function showLoader(message = "Loading...") {
+  const container = document.createElement("div");
+  container.id = "loader";
+  container.innerHTML = `<div class="spinner"></div><p>${message}</p>`;
+  Object.assign(container.style, {
+    position: "fixed",
+    inset: 0,
+    background: "rgba(0,0,0,0.6)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "#fff",
+    zIndex: 9999
+  });
+  document.body.appendChild(container);
+}
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+function hideLoader() {
+  document.getElementById("loader")?.remove();
+}
 
-// Load projects from Firestore
+// ===============================
+// 🧩 Load Projects from Firestore
+// ===============================
 async function loadProjects() {
   const projectContainer = document.querySelector(".project-grid");
-  projectContainer.innerHTML = "<p>Loading projects...</p>";
+  if (!projectContainer) return;
+
+  showLoader("Loading projects...");
 
   try {
     const querySnapshot = await getDocs(collection(db, "projects"));
-    projectContainer.innerHTML = ""; // Clear loading text
+    projectContainer.innerHTML = "";
 
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
+    if (querySnapshot.empty) {
+      projectContainer.innerHTML = "<p>No projects found.</p>";
+      hideLoader();
+      return;
+    }
+
+    querySnapshot.forEach((docSnap) => {
+      const data = docSnap.data();
+      const title = data.title || "Untitled Project";
+      const desc = data.description || "";
 
       const card = document.createElement("div");
       card.classList.add("project-card");
       card.innerHTML = `
-        <img src="${data.image}" alt="${data.title}" />
-        <h3>${data.title}</h3>
-        <p>${data.description}</p>
+        <button class="project-btn" data-title="${title}" data-desc="${desc}">
+          ${title}
+        </button>
       `;
       projectContainer.appendChild(card);
     });
   } catch (error) {
     console.error("Error loading projects:", error);
     projectContainer.innerHTML = "<p>⚠️ Failed to load projects.</p>";
+  } finally {
+    hideLoader();
   }
 }
 
-// Run function on page load
-document.addEventListener("DOMContentLoaded", loadProjects);
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
-
-// إعداد Firebase
-
-// تحميل المشاريع من Firebase
-async function loadProjects() {
-  const projectsSection = document.querySelector(".projects-container");
-  projectsSection.innerHTML = "";
-
+// ===============================
+// 🧠 Load About Section
+// ===============================
+async function loadAbout() {
   try {
-    const querySnapshot = await getDocs(collection(db, "projects"));
-    querySnapshot.forEach((doc) => {
-      const project = doc.data();
-      const projectCard = `
-        <div class="project-card">
-          <img src="${project.image}" alt="${project.title}">
-          <h3>${project.title}</h3>
-          <p>${project.description}</p>
-        </div>
-      `;
-      projectsSection.innerHTML += projectCard;
-    });
-  } catch (error) {
-    console.error("Error loading projects:", error);
+    const aboutRef = doc(db, "portfolio", "about");
+    const aboutSnap = await getDoc(aboutRef);
+
+    if (aboutSnap.exists()) {
+      const data = aboutSnap.data();
+      const aboutCard = document.querySelector(".about-card p");
+      if (aboutCard) aboutCard.textContent = data.desc || aboutCard.textContent;
+    }
+  } catch (err) {
+    console.error("Error loading about:", err);
   }
 }
 
-loadProjects();
-// ----- Admin Login -----
+// ===============================
+// 🔗 Load Contact Links
+// ===============================
+async function loadContacts() {
+  try {
+    const contactRef = doc(db, "portfolio", "contact");
+    const contactSnap = await getDoc(contactRef);
+
+    if (contactSnap.exists()) {
+      const data = contactSnap.data();
+      const links = document.querySelectorAll(".quick-links a");
+      links.forEach(link => {
+        if (link.textContent.includes("Gmail") && data.gmail)
+          link.href = `mailto:${data.gmail}`;
+        if (link.textContent.includes("Instagram") && data.insta)
+          link.href = data.insta;
+        if (link.textContent.includes("GitHub") && data.github)
+          link.href = data.github;
+      });
+    }
+  } catch (err) {
+    console.error("Error loading contact links:", err);
+  }
+}
+
+// ===============================
+// 📨 Contact Form (demo)
+// ===============================
+function handleSend(e) {
+  e.preventDefault();
+  const msg = document.getElementById("formMsg");
+  msg.style.display = "block";
+  setTimeout(() => (msg.style.display = "none"), 2000);
+}
+
+// ===============================
+// 🔐 Admin Login Popup Logic
+// ===============================
 const adminBtn = document.getElementById("adminBtn");
 const popup = document.getElementById("popup");
 const closePopup = document.getElementById("closePopup");
 const submitPassword = document.getElementById("submitPassword");
 
-// لما تضغط على زرار Edit Portfolio
-adminBtn.addEventListener("click", () => {
-  popup.style.display = "flex"; // يظهر الـ popup
+if (adminBtn && popup && closePopup && submitPassword) {
+  adminBtn.addEventListener("click", () => (popup.style.display = "flex"));
+  closePopup.addEventListener("click", () => (popup.style.display = "none"));
+
+  submitPassword.addEventListener("click", () => {
+    const inputPassword = document
+      .getElementById("adminPassword")
+      ?.value.trim();
+    const adminPassword = "omar2025";
+
+    if (inputPassword === adminPassword) {
+      popup.style.display = "none";
+      window.location.href = "dashboard.html";
+    } else {
+      alert("❌ Wrong password!");
+    }
+  });
+
+  document.getElementById("adminPassword")?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") submitPassword.click();
+  });
+}
+
+// ===============================
+// ⚙️ Init
+// ===============================
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadProjects();
+  await loadAbout();
+  await loadContacts();
 });
 
-// لما تضغط على علامة ×
-closePopup.addEventListener("click", () => {
-  popup.style.display = "none";
-});
-
-// لما تدخل الباسورد وتضغط Enter
-submitPassword.addEventListener("click", () => {
-  const inputPassword = document.getElementById("adminPassword").value;
-
-  // الباسورد اللي تختاره
-  const adminPassword = "omar2025";
-
-  if (inputPassword === adminPassword) {
-    window.location.href = "edit.html"; // يفتح صفحة التعديل
-  } else {
-    alert("❌ Wrong password!");
-  }
-});
+// ===============================
+// ✨ Small CSS for loader
+// ===============================
+const loaderStyle = document.createElement("style");
+loaderStyle.textContent = `
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(255,255,255,0.2);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+`;
+document.head.appendChild(loaderStyle);

@@ -78,14 +78,17 @@ async function loadProjects() {
             const data = docSnap.data();
             const title = data.title || "Untitled Project";
             const desc = data.description || "";
-            const imageUrl = data.image || 'https://via.placeholder.com/400x180?text=No+Image'; // رابط بديل في حال عدم وجود صورة
+            // لاحظ أننا نستخدم رابطاً بديلاً أوضح في حالة عدم وجود رابط صورة في Firestore
+            const imageUrl = data.image || 'https://via.placeholder.com/400x180?text=Placeholder'; 
 
             const card = document.createElement("div");
             card.classList.add("project-card");
             
-            // إضافة الصورة المصغرة والعنوان إلى البطاقة
+            // التعديل: إضافة خاصية onerror
+            // هذه الخاصية تضمن أنه إذا فشل تحميل الصورة (لأن الرابط غير مباشر أو غير صالح)، فسيتم استبدالها برابط الـ Placeholder.
             card.innerHTML = `
-                <img src="${imageUrl}" alt="${title}" class="project-thumbnail" loading="lazy">
+                <img src="${imageUrl}" alt="${title}" class="project-thumbnail" loading="lazy" 
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/400x180?text=Invalid+Image+Link'">
                 <div class="project-title">${title}</div>
             `;
             

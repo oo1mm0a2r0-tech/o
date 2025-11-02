@@ -1,76 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Portfolio (Dashboard)</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      background: #f8f9fa;
-      font-family: "Poppins", sans-serif;
-      padding: 40px;
-    }
-    .dashboard {
-      max-width: 700px;
-      margin: auto;
-      background: #fff;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: 600;
-    }
-    input, textarea, select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin-top: 6px;
-      font-size: 15px;
-    }
-    button {
-      background: #28a745;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      margin-top: 20px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #218838;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Omar Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="dashboard">
-    <h1>Portfolio Dashboard</h1>
 
-    <label for="sectionSelect">Select Section</label>
-    <select id="sectionSelect">
-      <option value="about">About</option>
-      <option value="projects">Projects</option>
-      <option value="contact">Contact</option>
-    </select>
+<body class="admin-dashboard">
+  <header class="admin-header">
+    <h1>🛠 Portfolio Dashboard</h1>
+    <a href="index.html" class="btn btn-outline">← Back to Site</a>
+  </header>
 
-    <div id="inputArea"></div>
-
-    <button id="saveBtn">💾 Save Changes</button>
-
-    <div style="text-align:center; margin-top:20px;">
-      <a href="index.html">← Back to Portfolio</a>
+  <main class="dashboard-main">
+    <!-- Section Selector -->
+    <div class="project-form">
+      <label for="sectionSelect">Select Section</label>
+      <select id="sectionSelect">
+        <option value="projects" selected>Projects</option>
+        <option value="about">About Me</option>
+        <option value="contact">Contact Links</option>
+      </select>
     </div>
-  </div>
+
+    <!-- Dynamic Input Area -->
+    <div id="inputArea" class="project-form"></div>
+
+    <button id="saveBtn" class="btn-primary" style="width:100%;margin-top:1rem;">
+      💾 Save Changes
+    </button>
+
+    <!-- Table for existing projects -->
+    <div id="projectsList" class="project-table" style="display:none;">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody id="projectRows"></tbody>
+      </table>
+    </div>
+  </main>
 
   <script type="module" src="firebase-config.js"></script>
   <script type="module" src="dashboard.js"></script>
+
+  <script>
+    // ✅ واجهة ديناميكية لتغيير نوع القسم حسب الاختيار
+    const sectionSelect = document.getElementById("sectionSelect");
+    const inputArea = document.getElementById("inputArea");
+    const projectsList = document.getElementById("projectsList");
+
+    function loadSection(section) {
+      inputArea.innerHTML = "";
+      projectsList.style.display = "none";
+
+      if (section === "projects") {
+        inputArea.innerHTML = `
+          <h2>Add New Project</h2>
+          <label>Project Title</label>
+          <input type="text" id="project-title" placeholder="Enter project title" />
+
+          <label>Description</label>
+          <textarea id="project-desc" placeholder="Write short description"></textarea>
+
+          <label>Image URL</label>
+          <input type="text" id="project-img" placeholder="Paste image URL" />
+
+          <button id="addProject" class="btn-primary" style="width:100%;margin-top:1rem;">➕ Add Project</button>
+        `;
+        projectsList.style.display = "block";
+      } 
+      else if (section === "about") {
+        inputArea.innerHTML = `
+          <h2>Edit About Me</h2>
+          <label>Title</label>
+          <input type="text" id="about-title" placeholder="Who are you?" />
+
+          <label>Description</label>
+          <textarea id="about-desc" placeholder="Describe yourself"></textarea>
+
+          <button id="saveAbout" class="btn-primary" style="width:100%;margin-top:1rem;">💾 Save About</button>
+        `;
+      } 
+      else if (section === "contact") {
+        inputArea.innerHTML = `
+          <h2>Edit Contact Links</h2>
+          <label>Gmail</label>
+          <input type="text" id="gmail-link" placeholder="Enter Gmail URL" />
+
+          <label>GitHub</label>
+          <input type="text" id="github-link" placeholder="Enter GitHub URL" />
+
+          <label>Instagram</label>
+          <input type="text" id="insta-link" placeholder="Enter Instagram URL" />
+
+          <button id="saveContact" class="btn-primary" style="width:100%;margin-top:1rem;">💾 Save Contact</button>
+        `;
+      }
+    }
+
+    sectionSelect.addEventListener("change", (e) => {
+      loadSection(e.target.value);
+    });
+
+    // تحميل أول قسم افتراضياً
+    loadSection("projects");
+  </script>
 </body>
 </html>

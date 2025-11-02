@@ -3,44 +3,167 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard - Omar Portfolio</title>
+  <title>Portfolio Dashboard | Omar</title>
   <link rel="stylesheet" href="style.css">
-  <script type="module" src="firebase-config.js"></script>
+  <style>
+    body {
+      background: #0e0e0e;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    .dashboard {
+      max-width: 850px;
+      margin: auto;
+      background: #1a1a1a;
+      border-radius: 14px;
+      padding: 30px;
+      border: 1px solid #2c2c2c;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffb400;
+      margin-bottom: 35px;
+    }
+
+    h2 {
+      color: #ffb400;
+      border-left: 4px solid #ffb400;
+      padding-left: 10px;
+      margin-top: 30px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #555;
+      background: #111;
+      color: #fff;
+      margin-top: 6px;
+      font-size: 15px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      background: #ffb400;
+      color: #111;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-top: 15px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ffaa00;
+    }
+
+    #projectList {
+      margin-top: 20px;
+      background: #111;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #333;
+    }
+
+    .project-item {
+      border-bottom: 1px solid #333;
+      padding: 10px 0;
+    }
+
+    .project-item:last-child {
+      border-bottom: none;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    a {
+      color: #ffb400;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: #333;
+      margin: 30px 0;
+    }
+
+    @media (max-width: 600px) {
+      .dashboard {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>🛠️ Admin Dashboard</h1>
+  <div class="dashboard">
+    <h1>🛠️ Admin Dashboard</h1>
 
-  <section id="about-section">
-    <h2>About Me</h2>
-    <input type="text" id="about-title" placeholder="Your name...">
-    <textarea id="about-desc" placeholder="Short description..."></textarea>
-    <button id="saveAbout">💾 Save About</button>
-  </section>
+    <!-- ===== About Section ===== -->
+    <section id="about-section">
+      <h2>About Me</h2>
+      <input type="text" id="about-title" placeholder="Your name...">
+      <textarea id="about-desc" placeholder="Short description..."></textarea>
+      <button id="saveAbout">💾 Save About</button>
+    </section>
 
-  <hr>
+    <hr>
 
-  <section id="projects-section">
-    <h2>Projects</h2>
-    <input type="text" id="project-title" placeholder="Project Title">
-    <textarea id="project-desc" placeholder="Project Description"></textarea>
-    <input type="text" id="project-img" placeholder="Image URL">
-    <button id="addProject">➕ Add Project</button>
+    <!-- ===== Projects Section ===== -->
+    <section id="projects-section">
+      <h2>Projects</h2>
+      <input type="text" id="project-title" placeholder="Project Title">
+      <textarea id="project-desc" placeholder="Project Description"></textarea>
+      <input type="text" id="project-img" placeholder="Image URL">
+      <button id="addProject">➕ Add Project</button>
 
-    <div id="projectList"></div>
-  </section>
+      <div id="projectList">
+        <p style="color:#aaa;">Projects will appear here...</p>
+      </div>
+    </section>
 
-  <hr>
+    <hr>
 
-  <section id="contact-section">
-    <h2>Contact Links</h2>
-    <input type="text" id="gmail-link" placeholder="Gmail link">
-    <input type="text" id="github-link" placeholder="GitHub link">
-    <input type="text" id="insta-link" placeholder="Instagram link">
-    <button id="saveContact">💾 Save Contact</button>
-  </section>
+    <!-- ===== Contact Section ===== -->
+    <section id="contact-section">
+      <h2>Contact Links</h2>
+      <input type="text" id="gmail-link" placeholder="Gmail link">
+      <input type="text" id="github-link" placeholder="GitHub link">
+      <input type="text" id="insta-link" placeholder="Instagram link">
+      <button id="saveContact">💾 Save Contact</button>
+    </section>
 
-  <br>
-  <a href="index.html">← Back to Portfolio</a>
+    <div class="footer">
+      <br>
+      <a href="index.html">← Back to Portfolio</a>
+    </div>
+  </div>
 
   <script type="module" src="dashboard.js"></script>
 </body>

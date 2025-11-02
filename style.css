@@ -1,4 +1,6 @@
-/* ====== RESET ====== */
+/* ===============================
+   🌙 RESET & BASE STYLES
+=============================== */
 * {
   margin: 0;
   padding: 0;
@@ -7,200 +9,378 @@
 }
 
 body {
-  background-color: #0f0f0f;
-  color: #fff;
+  background: linear-gradient(180deg, #071023, #0f1724);
+  color: #e6eef8;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* ====== HEADER ====== */
+:root {
+  --bg: #071023;
+  --surface: #0b1220;
+  --muted: #9aa7bb;
+  --accent: #7c3aed;
+  --accent-light: #a78bfa;
+  --light-bg: #f9fafb;
+  --light-surface: #ffffff;
+  --text-dark: #1f2937;
+  --border-light: #e5e7eb;
+}
+
+/* ===============================
+   🧭 HEADER
+=============================== */
 header {
+  background: var(--surface);
+  padding: 2rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.main-nav a {
+  color: var(--muted);
+  margin: 0 8px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.main-nav a:hover {
+  color: var(--accent-light);
+}
+
+/* ===============================
+   🧩 BUTTONS
+=============================== */
+.btn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 0;
+  transition: all 0.25s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  color: white;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+}
+
+.btn:hover,
+.project-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ===============================
+   🚀 HERO
+=============================== */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  max-width: 1100px;
+  margin: auto;
+  padding: 4rem 1rem;
+}
+
+.hero-left {
+  flex: 1;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-tag {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.hero-right {
+  width: 280px;
   text-align: center;
-  padding: 3rem 1rem;
-  background: linear-gradient(135deg, #1f1f1f, #171717);
-  border-bottom: 2px solid #333;
 }
 
-header h1 {
-  font-size: 2.8rem;
-  color: #ffb400;
-  letter-spacing: 2px;
+.avatar img {
+  width: 100%;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-header p {
-  color: #ccc;
-  font-size: 1.1rem;
-  margin-top: 8px;
+/* ===============================
+   💡 ABOUT SECTION
+=============================== */
+#about {
+  max-width: 1100px;
+  margin: auto;
+  padding: 4rem 1rem;
 }
 
-/* ====== PROJECTS ====== */
+#about h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent-light);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+  align-items: start;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.2rem;
+  border-radius: 12px;
+}
+
+.skills {
+  margin-top: 1rem;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.label {
+  width: 120px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.bar {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 999px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+}
+
+/* ===============================
+   🧱 PROJECTS
+=============================== */
 #projects {
-  padding: 3rem 1rem;
+  padding: 4rem 1rem;
   text-align: center;
 }
 
 #projects h2 {
-  font-size: 2rem;
-  color: #ffb400;
-  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent-light);
 }
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
   max-width: 1100px;
   margin: auto;
 }
 
 .project-card {
-  background-color: #1b1b1b;
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
-  padding: 1rem;
-  transition: 0.3s ease;
-  border: 1px solid #252525;
+  padding: 1.5rem;
+  transition: 0.25s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
-  border-color: #ffb400;
-  box-shadow: 0 0 10px rgba(255, 180, 0, 0.4);
+  background: rgba(255, 255, 255, 0.06);
 }
 
-.project-card img {
+/* ===============================
+   📩 CONTACT
+=============================== */
+#contact {
+  max-width: 1100px;
+  margin: auto;
+  padding: 4rem 1rem;
+}
+
+#contact h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent-light);
+}
+
+input, textarea {
   width: 100%;
-  border-radius: 10px;
-  height: 150px;
+  background: #0b1220;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: white;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  resize: none;
+  height: 120px;
+}
+
+/* ===============================
+   ⚙️ ADMIN DASHBOARD (edit.html)
+=============================== */
+.admin-dashboard {
+  background: var(--light-bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--light-surface);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.project-form {
+  background: var(--light-surface);
+  border: 1px solid var(--border-light);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.project-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.project-form input,
+.project-form textarea {
+  width: 100%;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 1rem;
+  background: #f9fafb;
+}
+
+.project-form button {
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.project-form button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Projects Table */
+.project-table {
+  background: var(--light-surface);
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  overflow-x: auto;
+}
+
+.project-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.project-table th, .project-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.project-table th {
+  background: #f3f4f6;
+  color: var(--text-dark);
+}
+
+.project-table td img {
+  width: 80px;
+  height: 50px;
+  border-radius: 6px;
   object-fit: cover;
 }
 
-.project-card h3 {
-  margin-top: 10px;
-  font-size: 1.1rem;
-  color: #fff;
+/* ===============================
+   📱 RESPONSIVE
+=============================== */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column-reverse;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-/* ====== FOOTER ====== */
-footer {
-  text-align: center;
-  padding: 3rem 1rem;
-  background-color: #111;
-  border-top: 2px solid #222;
-}
-
-footer h2 {
-  font-size: 1.6rem;
-  color: #ffb400;
-  margin-bottom: 1rem;
-}
-
-.social-links {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.social-links a {
-  text-decoration: none;
-  color: #ccc;
-  transition: 0.3s;
-  font-size: 1rem;
-}
-
-.social-links a:hover {
-  color: #ffb400;
-}
-
-/* ====== ADMIN BUTTON ====== */
-#adminBtn {
-  background-color: transparent;
-  border: 1px solid #ffb400;
-  color: #ffb400;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#adminBtn:hover {
-  background-color: #ffb400;
-  color: #111;
-}
-
-/* ====== POPUP ====== */
-.popup {
-  display: none; /* hidden by default */
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
-  justify-content: center;
-  align-items: center;
-}
-
-.popup-content {
-  background-color: #1c1c1c;
-  padding: 2rem;
-  border-radius: 10px;
-  width: 300px;
-  text-align: center;
-  border: 1px solid #333;
-}
-
-.popup-content h2 {
-  color: #ffb400;
-  margin-bottom: 1rem;
-}
-
-.popup-content input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 1rem;
-  border: 1px solid #555;
-  background-color: #111;
-  color: #fff;
-  border-radius: 6px;
-}
-
-.popup-content button {
-  background-color: #ffb400;
-  border: none;
-  padding: 10px 20px;
-  color: #111;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.popup-content button:hover {
-  background-color: #ffaa00;
-}
-
-#closePopup {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  font-size: 22px;
-  cursor: pointer;
-  color: #ffb400;
-}
-
-/* ====== RESPONSIVE ====== */
 @media (max-width: 600px) {
-  header h1 {
-    font-size: 2.2rem;
-  }
-
-  .project-card img {
-    height: 130px;
-  }
-
-  footer h2 {
-    font-size: 1.4rem;
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

@@ -1,241 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Omar's Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Omar's Portfolio</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css" />
 
-  <meta name="description" content="Omar Hazem — Logo Design, Web Programming, Copywriting, Translation. See my work and contact me.">
+    <meta name="description" content="Omar Hazem — Logo Design, Web Programming, Copywriting, Translation. See my work and contact me.">
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="logo-badge">OM</div>
-        <div>
-          <div class="title">Omar’s Portfolio</div>
-          <div class="subtitle">Logo Design • Web Programming • Copywriting • Translation</div>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <div class="logo-badge">OM</div>
+                <div>
+                    <div class="title">Omar’s Portfolio</div>
+                    <div class="subtitle">Logo Design • Web Programming • Copywriting • Translation</div>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Portfolio</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="actions">
+                <button class="btn btn-outline" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">See my work</button>
+                <button class="btn btn-primary" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About me</button>
+            </div>
         </div>
-      </div>
+    </header>
 
-      <nav class="main-nav">
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#projects" class="nav-link">Portfolio</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </nav>
-
-      <div class="actions">
-        <button class="btn btn-outline" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">See my work</button>
-        <button class="btn btn-primary" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About me</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section id="home" class="hero container" data-aos="fade-up">
-    <div class="hero-left">
-      <h1 class="hero-title">I design & build websites</h1>
-      <p class="hero-tag">I turn ideas into attractive designs and interfaces.</p>
-      <div class="hero-actions">
-        <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">See my work</button>
-        <button class="btn btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About me</button>
-      </div>
-    </div>
-
-    <aside class="hero-right card" data-aos="fade-left">
-      <div class="avatar">
-        <img src="assets/images/avatar.jpg" alt="Omar avatar" onerror="this.src='https://via.placeholder.com/260x260?text=Omar'">
-      </div>
-      <div style="margin-top:12px">
-        <strong>Omar Hazem</strong>
-        <div class="small muted">Designer • Web Developer • Copywriter</div>
-      </div>
-      <div class="quick-links">
-        <a href="mailto:oo2mm00a1r0@gmail.com" target="_blank" class="small muted">📧 oo2mm00a1r0@gmail.com</a><br>
-        <a href="https://www.instagram.com/omarh-azem9" target="_blank" class="small muted">📸 Instagram</a>
-      </div>
-    </aside>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="container" data-aos="fade-up">
-    <h2>About</h2>
-    <div class="about-grid">
-      <div class="card about-card">
-        <p>
-          Hi — I'm Omar. I design logos and build responsive websites. I enjoy turning simple ideas into clear visual identities and smooth user experiences.
-        </p>
-        <div class="skills">
-          <div class="skill"><div class="label">Logo Design</div><div class="bar"><span style="width:85%"></span></div></div>
-          <div class="skill"><div class="label">HTML / CSS</div><div class="bar"><span style="width:88%"></span></div></div>
-          <div class="skill"><div class="label">Copywriting</div><div class="bar"><span style="width:78%"></span></div></div>
-          <div class="skill"><div class="label">Translation</div><div class="bar"><span style="width:74%"></span></div></div>
+    <section id="home" class="hero container" data-aos="fade-up">
+        <div class="hero-left">
+            <h1 class="hero-title">I design & build websites</h1>
+            <p class="hero-tag">I turn ideas into attractive designs and interfaces.</p>
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">See my work</button>
+                <button class="btn btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">About me</button>
+            </div>
         </div>
-      </div>
 
-      <aside class="card stats-card">
-        <h3>Services</h3>
-        <ul>
-          <li>Logo & Brand Identity</li>
-          <li>Responsive Websites</li>
-          <li>Copywriting & Social Content</li>
-          <li>English ⇄ Arabic Translation</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+        <aside class="hero-right card" data-aos="fade-left">
+            <div class="avatar">
+                <img src="assets/images/avatar.jpg" alt="Omar avatar" onerror="this.src='https://via.placeholder.com/260x260?text=Omar'">
+            </div>
+            <div style="margin-top:12px">
+                <strong>Omar Hazem</strong>
+                <div class="small muted">Designer • Web Developer • Copywriter</div>
+            </div>
+            <div class="quick-links">
+                <a href="mailto:oo2mm00a1r0@gmail.com" target="_blank" class="small muted">📧 oo2mm00a1r0@gmail.com</a><br>
+                <a href="https://www.instagram.com/omarh-azem9" target="_blank" class="small muted">📸 Instagram</a>
+            </div>
+        </aside>
+    </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="container" data-aos="fade-up">
-    <h2>Portfolio</h2>
-    <div class="grid project-grid" id="project-list">
-      <div class="project-card" data-type="logos" data-title="Nestlit — Logo" data-desc="Logo & ID for Nestlit — Tools: Figma">
-        <button class="project-btn">Nestlit — Logo</button>
-      </div>
-      <div class="project-card" data-type="copy" data-title="Copywriting Sample" data-desc="Taste the freshness in every bite!">
-        <button class="project-btn">Copywriting ✍️</button>
-      </div>
-      <div class="project-card" data-type="trans" data-title="Translation Sample" data-desc="English → Arabic translation sample.">
-        <button class="project-btn">Translation 🌍</button>
-      </div>
-    </div>
+    <section id="about" class="container" data-aos="fade-up">
+        <h2>About</h2>
+        <div class="about-grid">
+            <div class="card about-card">
+                <p>
+                    Hi — I'm Omar. I design logos and build responsive websites. I enjoy turning simple ideas into clear visual identities and smooth user experiences.
+                </p>
+                <div class="skills">
+                    <div class="skill"><div class="label">Logo Design</div><div class="bar"><span style="width:85%"></span></div></div>
+                    <div class="skill"><div class="label">HTML / CSS</div><div class="bar"><span style="width:88%"></span></div></div>
+                    <div class="skill"><div class="label">Copywriting</div><div class="bar"><span style="width:78%"></span></div></div>
+                    <div class="skill"><div class="label">Translation</div><div class="bar"><span style="width:74%"></span></div></div>
+                </div>
+            </div>
 
-    <!-- Modal -->
-    <div id="projectModal" class="modal" onclick="closeProjectModal()">
-      <div class="modal-content modal-half" onclick="event.stopPropagation()">
-        <h3 id="modalTitle"></h3>
-        <p id="modalDesc" class="muted"></p>
-        <div style="text-align:right;margin-top:12px">
-          <button class="btn btn-primary" onclick="closeProjectModal()">Close</button>
+            <aside class="card stats-card">
+                <h3>Services</h3>
+                <ul>
+                    <li>Logo & Brand Identity</li>
+                    <li>Responsive Websites</li>
+                    <li>Copywriting & Social Content</li>
+                    <li>English ⇄ Arabic Translation</li>
+                </ul>
+            </aside>
         </div>
-      </div>
+    </section>
+
+    <section id="projects" class="container" data-aos="fade-up">
+        <h2>Portfolio</h2>
+        <div class="grid project-grid" id="project-list">
+             </div>
+
+        <div id="projectModal" class="modal" onclick="closeProjectModal()">
+            <div class="modal-content modal-half" onclick="event.stopPropagation()">
+                <button class="close-btn" onclick="closeProjectModal()">&times;</button>
+                <h3 id="modalTitle"></h3>
+                <div id="modalImageContainer" style="margin-bottom:15px; text-align:center;">
+                    <img id="modalImage" src="" alt="Project Image" style="max-width:100%; height:auto; border-radius:8px;">
+                </div>
+                <p id="modalDesc" class="muted"></p>
+                <div style="text-align:right;margin-top:12px">
+                    <button class="btn btn-primary" onclick="closeProjectModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container" data-aos="fade-up">
+        <h2>Contact</h2>
+        <div class="contact-grid">
+            <div class="card">
+                <form id="contactForm" onsubmit="handleSend(event)">
+                    <label>Name</label>
+                    <input type="text" id="name" placeholder="Your name" required>
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="you@example.com" required>
+                    <label>Message</label>
+                    <textarea id="message" placeholder="Write your message..." required></textarea>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                        <span class="small muted">or email me: <a href="mailto:oo2mm00a1r0@gmail.com" style="color:inherit">Gmail</a></span>
+                    </div>
+                    <div id="formMsg" class="msg">Message sent (demo)</div>
+                </form>
+            </div>
+
+            <aside class="card">
+                <h3>Quick Links</h3>
+                <a href="mailto:oo2mm00a1r0@gmail.com" class="muted">📧 Gmail</a>
+                <a href="https://github.com/oo1mm0a2r0-tech" target="_blank" class="muted">💻 GitHub</a>
+                <a href="https://www.instagram.com/omarh-azem9" target="_blank" class="muted">📸 Instagram</a>
+                <button id="adminBtn" class="btn btn-outline">🔒 Edit Portfolio</button>
+            </aside>
+        </div>
+    </section>
+
+    <footer class="container">
+        <div class="footer">
+            <span>© <span id="year"></span> Omar’s Portfolio</span>
+            <span class="muted">Built with HTML • CSS • JS</span>
+        </div>
+    </footer>
+
+    <div id="popup" class="popup" style="display:none">
+        <div class="popup-content">
+            <span id="closePopup">&times;</span>
+            <h2>Enter Admin Password</h2>
+            <input type="password" id="adminPassword" placeholder="Enter password..." />
+            <button id="submitPassword">Enter</button>
+        </div>
     </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="container" data-aos="fade-up">
-    <h2>Contact</h2>
-    <div class="contact-grid">
-      <div class="card">
-        <form id="contactForm" onsubmit="handleSend(event)">
-          <label>Name</label>
-          <input type="text" id="name" placeholder="Your name" required>
-          <label>Email</label>
-          <input type="email" id="email" placeholder="you@example.com" required>
-          <label>Message</label>
-          <textarea id="message" placeholder="Write your message..." required></textarea>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Send</button>
-            <span class="small muted">or email me: <a href="mailto:oo2mm00a1r0@gmail.com" style="color:inherit">Gmail</a></span>
-          </div>
-          <div id="formMsg" class="msg">Message sent (demo)</div>
-        </form>
-      </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({duration:700, once:true});
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <script>
+        function closeProjectModal(){document.getElementById('projectModal').classList.remove('open');}
+    </script>
+    
+    <script type="module" src="./firebase-config.js"></script>
+    <script type="module" src="./script.js"></script>
 
-      <aside class="card">
-        <h3>Quick Links</h3>
-        <a href="mailto:oo2mm00a1r0@gmail.com" class="muted">📧 Gmail</a>
-        <a href="https://github.com/oo1mm0a2r0-tech" target="_blank" class="muted">💻 GitHub</a>
-        <a href="https://www.instagram.com/omarh-azem9" target="_blank" class="muted">📸 Instagram</a>
-        <button id="adminBtn" class="btn btn-outline">🔒 Edit Portfolio</button>
-      </aside>
-    </div>
-  </section>
-
-  <footer class="container">
-    <div class="footer">
-      <span>© <span id="year"></span> Omar’s Portfolio</span>
-      <span class="muted">Built with HTML • CSS • JS</span>
-    </div>
-  </footer>
-
-  <!-- POPUP -->
-  <div id="popup" class="popup" style="display:none">
-    <div class="popup-content">
-      <span id="closePopup">&times;</span>
-      <h2>Enter Admin Password</h2>
-      <input type="password" id="adminPassword" placeholder="Enter password..." />
-      <button id="submitPassword">Enter</button>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({duration:700, once:true});
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-  <script type="module" src="./firebase-config.js"></script>
-  <script type="module" src="./script.js"></script>
-
-  <script>
-    // Modal logic
-    document.addEventListener('click', e => {
-      if (e.target.classList.contains('project-btn')) {
-        const card = e.target.closest('.project-card');
-        document.getElementById('modalTitle').textContent = card.dataset.title;
-        document.getElementById('modalDesc').textContent = card.dataset.desc;
-        document.getElementById('projectModal').classList.add('open');
-      }
-    });
-    function closeProjectModal(){document.getElementById('projectModal').classList.remove('open');}
-  </script>
-
-  <style>
-    :root {
-      --bg: #000;
-      --surface: #111;
-      --text: #f5f5f5;
-      --muted: #aaa;
-      --accent: #ffb400;
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-    }
-    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-    .site-header { background: #0a0a0a; border-bottom: 1px solid #222; padding: 1.5rem 0; }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-    .logo-badge { background: var(--accent); color: #111; width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
-    .nav-link { color: var(--muted); margin: 0 10px; text-decoration: none; }
-    .nav-link:hover { color: var(--accent); }
-    .btn { border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: .3s; }
-    .btn-primary { background: var(--accent); color: #111; }
-    .btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
-    .btn-outline:hover { background: var(--accent); color: #111; }
-    .hero { display: flex; gap: 40px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 40px 0; }
-    .card { background: var(--surface); padding: 16px; border-radius: 10px; }
-    .project-card { background: var(--surface); padding: 14px; border-radius: 10px; display: flex; justify-content: center; align-items: center; }
-    .project-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 10px 16px; border-radius: 8px; cursor: pointer; }
-    .project-btn:hover { background: var(--accent); color: #111; }
-    .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: .3s; z-index: 999; }
-    .modal.open { opacity: 1; pointer-events: auto; }
-    .modal-content { background: var(--surface); padding: 20px; border-radius: 10px; width: 50%; color: var(--text); }
-    .popup { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 1000; }
-    .popup-content { background: var(--surface); padding: 2rem; border-radius: 10px; width: 300px; text-align: center; border: 1px solid #333; }
-    .popup-content input { width: 100%; padding: 10px; margin-bottom: 1rem; background: #000; border: 1px solid #333; color: #fff; border-radius: 5px; }
-    .footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-top: 1px solid #222; padding-top: 16px; margin-top: 40px; }
-    @media (max-width: 600px) {
-      .modal-content { width: 90%; }
-      .hero { flex-direction: column-reverse; text-align: center; }
-    }
-  </style>
+    <style>
+        :root {
+            --bg: #000;
+            --surface: #111;
+            --text: #f5f5f5;
+            --muted: #aaa;
+            --accent: #ffb400;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        .site-header { background: #0a0a0a; border-bottom: 1px solid #222; padding: 1.5rem 0; }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+        .logo-badge { background: var(--accent); color: #111; width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .nav-link { color: var(--muted); margin: 0 10px; text-decoration: none; }
+        .nav-link:hover { color: var(--accent); }
+        .btn { border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: .3s; }
+        .btn-primary { background: var(--accent); color: #111; }
+        .btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+        .btn-outline:hover { background: var(--accent); color: #111; }
+        .hero { display: flex; gap: 40px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 40px 0; }
+        .card { background: var(--surface); padding: 16px; border-radius: 10px; }
+        
+        /* التعديلات الرئيسية هنا */
+        .project-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .project-card { 
+            background: var(--surface); 
+            padding: 0; /* تم حذف الحشو ليناسب الصورة */
+            border-radius: 10px; 
+            display: block; 
+            overflow: hidden; 
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(255, 180, 0, 0.2); 
+        }
+        .project-card img {
+            width: 100%;
+            height: 180px; 
+            object-fit: cover; 
+            border-radius: 10px 10px 0 0; 
+            display: block;
+        }
+        .project-card .project-title {
+            color: var(--accent);
+            text-align: center;
+            padding: 12px;
+            font-weight: 600;
+            display: block; 
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: .3s; z-index: 999; }
+        .modal.open { opacity: 1; pointer-events: auto; }
+        .modal-content { 
+            background: var(--surface); 
+            padding: 20px; 
+            border-radius: 10px; 
+            width: 70%; /* زيادة العرض قليلاً */
+            max-width: 800px;
+            color: var(--text); 
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 30px;
+            color: var(--muted);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .popup { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+        .popup-content { background: var(--surface); padding: 2rem; border-radius: 10px; width: 300px; text-align: center; border: 1px solid #333; }
+        .popup-content input { width: 100%; padding: 10px; margin-bottom: 1rem; background: #000; border: 1px solid #333; color: #fff; border-radius: 5px; }
+        .footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border-top: 1px solid #222; padding-top: 16px; margin-top: 40px; }
+        @media (max-width: 600px) {
+            .modal-content { width: 90%; }
+            .hero { flex-direction: column-reverse; text-align: center; }
+            .header-inner { justify-content: center; text-align: center; }
+            .main-nav { display: none; } /* إخفاء قائمة التنقل في الشاشات الصغيرة */
+        }
+    </style>
 </body>
 </html>
